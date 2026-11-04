@@ -83,7 +83,7 @@ INSERT INTO activities(
 ) VALUES
 (
     "Oficina de Cerâmica Artesanal",
-    "",
+    "Conheça as técnicas de modelagem e criação de peças em cerâmica, desenvolvendo a criatividade, a coordenação motora e as habilidades manuais na produção de objetos decorativos e utilitários.",
     "http://localhost:5500/frontend/img/activities/ceramica.webp",
     "Estande 2",
     24,
@@ -92,7 +92,7 @@ INSERT INTO activities(
 ),
 (
     "Empreendedorismo Para Mulheres",
-    "",
+    "Desenvolva habilidades empreendedoras, aprenda a planejar e administrar seu próprio negócio e descubra oportunidades para gerar renda, fortalecer a autonomia financeira e valorizar o potencial feminino.",
     "http://localhost:5500/frontend/img/activities/conversa.webp",
     "Estande 4",
     2,
@@ -101,7 +101,7 @@ INSERT INTO activities(
 ),
 (
     "Confecção de Bonecas de Pano",
-    "",
+    "Aprenda a confeccionar bonecas de pano de forma artesanal, explorando a criatividade, as técnicas de costura e a personalização de peças únicas, valorizando a arte e a tradição do artesanato.",
     "http://localhost:5500/frontend/img/activities/boneca-pano.webp",
     "Estande 1",
     12,
