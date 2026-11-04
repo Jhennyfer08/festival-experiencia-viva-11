@@ -1,0 +1,46 @@
+import mysql from "mysql2/promise";
+import { readFile } from "node:fs/promises";
+
+class Database {
+    constructor() {
+        this.connection = null;
+    }
+
+    async connect() {
+        this.connection = await mysql.createConnection({
+            host: process.env.DB_HOST,
+            port: process.env.DB_PORT,
+            user: process.env.DB_USER,
+            password: process.env.DB_PASSWORD,
+            database: process.env.DB_NAME,
+            dateStrings: true
+        });
+    }
+
+    async disconnect() {
+        if (this.connection) {
+            await this.connection.end();
+            this.connection = null;
+        }
+    }
+
+    async executeQuery(query, params = []) {
+        try {
+            await this.connect();
+            const [result] = await this.connection.execute(query, params);
+            return result;
+        } catch (error) {
+            console.log(`Identified error on executeQuery: ${error}`);
+            throw error;
+        } finally{
+            await this.disconnect();
+        }
+    }
+
+    async executeQueryFile(filepath, params = []){
+        const query = await readFile(filepath, "utf8");
+        return await this.executeQuery(query, params);
+    }
+}
+
+export const database = new Database();
