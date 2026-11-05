@@ -54,3 +54,17 @@ async function loadNavbar() {
 await loadNavbar();
 await loadComponents("/frontend/html/components/header.html", "header");
 await loadComponents("/frontend/html/components/footer.html", "footer");
+
+function headerCarousel() {
+    const carousel = document.getElementById("carousel");
+    const slides = document.querySelectorAll(".slide");
+
+    let currentSlide = 0;
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+
+        carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }, 3000);
+}
+
+headerCarousel();
