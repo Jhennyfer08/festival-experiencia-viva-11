@@ -1,6 +1,6 @@
 export function formatDate(date) {
-    [day, month] = date.split(" ")[0].split("-").reverse();
-    return `[${day}/${month}]`;
+    const [day, month] = date.split(" ")[0].split("-").reverse();
+    return `${day}/${month}`;
 }
 
 export function formatTime(time) {

@@ -45,7 +45,7 @@ async function loadNavbar() {
     const logout = document.getElementById("logout");
     if (logout) {
         logout.addEventListener("click", () => {
-            localStorage.removeItem("logout");
+            localStorage.removeItem("access");
             window.location.href = "/frontend/html/auth/login.html";
         });
     }

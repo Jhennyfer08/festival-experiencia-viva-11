@@ -15,7 +15,7 @@ async function createOptions(containerId, route) {
 
 async function loadAll() {
     const container = document.getElementById("tbody");
-    const composition = await api.get("/participants");
+    const composition = await api.get("/inscriptions");
     let html = "";
 
     composition.content.forEach((element) => {
@@ -49,10 +49,10 @@ async function save(event) {
 
     if (button.textContent === "Alterar") {
         body.id = button.dataset.id;
-        result = await api.put("/participants", body);
+        result = await api.put("/inscriptions", body);
         button.textContent = "Cadastrar";
     } else {
-        result = await api.post("/participants", body);
+        result = await api.post("/inscriptions", body);
     }
 
     const error = document.getElementById("formError");
@@ -73,7 +73,7 @@ function editOptions(selectId, optionValue) {
 }
 
 async function edit(id) {
-    const composition = await api.get(`/participants/${id}`);
+    const composition = await api.get(`/inscriptions/${id}`);
 
     editOptions("id_activity", composition.content.id_activity);
     editOptions("id_participant", composition.content.id_participant);
@@ -84,7 +84,7 @@ async function edit(id) {
 }
 
 async function remove(id) {
-    const result = await api.delete(`/participants/${id}`);
+    const result = await api.delete(`/inscriptions/${id}`);
 
     if (!result.success) {
         await showDialog(result.message);

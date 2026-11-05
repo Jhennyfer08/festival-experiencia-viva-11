@@ -20,7 +20,7 @@ async function login(event) {
         event.target.reset();
 
         localStorage.removeItem("access");
-        localStorage.setItem("access");
+        localStorage.setItem("access", JSON.stringify(result));
         const access = JSON.parse(localStorage.getItem("access"));
 
         if (access.role === "admin") {

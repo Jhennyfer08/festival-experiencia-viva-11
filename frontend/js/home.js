@@ -1,12 +1,8 @@
 import { api } from "/frontend/js/config/api.js";
-import {
-    formatDate,
-    formatTime,
-    validDate,
-} from "/frontend/js/config/datetime.js";
+import { formatDate, formatTime, validDate} from "/frontend/js/config/datetime.js";
 
 async function createInscriptButton(activityId, participantId) {
-    const result = await api.get(`/inscription/${activityId}/${participantId}`);
+    const result = await api.get(`/inscriptions/${activityId}/${participantId}`);
 
     if (!result.success) {
         return `<button type="button" class="inscript-button" data-activity="${activityId}">Se Inscrever</button>`;
@@ -22,7 +18,7 @@ async function loadActivities() {
     let html = "";
 
     for (const element of composition.content) {
-        if (validDate(element.date, element.time)) {
+        if (!validDate(element.date, element.time)) {
             html += `
             <article class="activity">
                 <div class="img-container">
@@ -40,6 +36,7 @@ async function loadActivities() {
         `;
         }
     }
+    console.log(html);
 
     container.innerHTML = html;
 

@@ -1,4 +1,4 @@
-async function showDialog(message) {
+export async function showDialog(message) {
     const html = `
         <dialog id="dialog" class="dialog">
             <span class="icon">&#10177;</span>
