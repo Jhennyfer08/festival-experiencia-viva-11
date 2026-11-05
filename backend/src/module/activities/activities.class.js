@@ -43,12 +43,6 @@ export class Activities {
         return result;
     }
 
-    async login() {
-        const params = [this.email];
-        const result = await database.executeQueryFile("./sql/activities/login.sql", params);
-        return result;
-    }
-
     async update() {
         const params = [
             this.name,
