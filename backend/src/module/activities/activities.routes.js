@@ -1,3 +1,4 @@
+import { Inscriptions } from "../inscriptions/inscriptions.class.js";
 import { Activities } from "./activities.class.js";
 import { Validation } from "./activities.validations.js";
 import { Router } from "express";
@@ -18,12 +19,10 @@ routes.get("/", async (req, res, next) => {
     }
 });
 
-routes.get("/:id", async (req, res, next) => {
+routes.get("/inscripted", async (req, res, next) => {
     try {
-        const activities = new Activities({ id: req.params.id });
-        await new Validation(activities).verifyId();
-
-        const [result] = await activities.findById();
+        const activities = new Activities();
+        const result = await activities.findInscripted();
 
         return res.status(200).json({
             success: true,
@@ -34,10 +33,12 @@ routes.get("/:id", async (req, res, next) => {
     }
 });
 
-routes.get("/inscripted", async (req, res, next) => {
+routes.get("/:id", async (req, res, next) => {
     try {
-        const activities = new Activities();
-        const [result] = await activities.findInscripted();
+        const activities = new Activities({ id: req.params.id });
+        await new Validation(activities).verifyId();
+
+        const [result] = await activities.findById();
 
         return res.status(200).json({
             success: true,
