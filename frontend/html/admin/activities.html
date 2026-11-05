@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="O Festival Experiência VIVA é um evento anual realizado com o apoio financeiro da Instituição VIVA, que acredita no poder transformador da arte, da cultura e da educação. Com uma programação gratuita e acessível a toda a comunidade, o festival proporciona momentos de aprendizado, entretenimento e conexão, valorizando a diversidade cultural e ampliando o acesso ao conhecimento."/>
+
+        <link rel="shortcut icon" href="/frontend/img/icons/logo.webp" type="image/x-icon"/>
+
+        <link rel="stylesheet" href="/frontend/css/global.css" />
+        <link rel="stylesheet" href="/frontend/css/components.css" />
+
+        <script type="module" src="/frontend/js/auth/adminLock.js"></script>
+        <script type="module" src="/frontend/js/config/components.js"></script>
+        <script type="module" src="/frontend/js/admin/activities.js"></script>
+        
+        <title>Festival Experiência Viva</title>
+    </head>
+    
+    <body>
+        <header id="header"></header>
+        <nav id="nav" role="navigation"></nav>
+
+        <main id="main">
+            <h2>Cadastro de Atividades</h2>
+
+            <form action="" class="form" id="form">
+                
+                <article class="form-group">
+                    <label for="name">Nome:</label>
+                    <input type="text" name="nameInput" id="name" required>
+                </article>
+
+                <article class="form-group">
+                    <label for="description">Descrição:</label>
+                    <textarea name="descriptionInput" id="description" required></textarea>
+                </article>
+
+                <article class="form-group">
+                    <label for="image">Imagem:</label>
+                    <input type="url" name="imageInput" id="image" autocomplete="url" required>
+                </article>
+
+                <article class="form-group">
+                    <label for="position">Localização:</label>
+                    <input type="text" name="positionInput" id="position" required>
+                </article>
+
+                <article class="form-group">
+                    <label for="capacity">Capacidade de Vagas:</label>
+                    <input type="number" name="capacityInput" id="capacity" required>
+                </article>
+
+                <article class="form-group">
+                    <label for="date">Data:</label>
+                    <input type="date" name="dateInput" id="date" required>
+                </article>
+
+                <article class="form-group">
+                    <label for="time">Horário:</label>
+                    <input type="time" name="timeInput" id="time" required>
+                </article>
+
+                <span id="formError"></span>
+                <button type="submit" id="submitButton">Cadastrar</button>
+            </form>
+
+            <h2>Lista de Atividades</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Localização</th>
+                        <th>Capacidade</th>
+                        <th>Data</th>
+                        <th>Horário</th>
+                        <th>Editar</th>
+                        <th>Excluir</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tbody"></tbody>
+            </table>
+        </main>
+
+        <footer id="footer"></footer>
+    </body>
+</html>

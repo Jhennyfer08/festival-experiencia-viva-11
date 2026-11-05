@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="O Festival Experiência VIVA é um evento anual realizado com o apoio financeiro da Instituição VIVA, que acredita no poder transformador da arte, da cultura e da educação. Com uma programação gratuita e acessível a toda a comunidade, o festival proporciona momentos de aprendizado, entretenimento e conexão, valorizando a diversidade cultural e ampliando o acesso ao conhecimento."/>
+
+        <link rel="shortcut icon" href="/frontend/img/icons/logo.webp" type="image/x-icon"/>
+
+        <link rel="stylesheet" href="/frontend/css/global.css" />
+        <link rel="stylesheet" href="/frontend/css/components.css" />
+
+        <script type="module" src="/frontend/js/config/components.js"></script>
+        <script type="module" src="/frontend/js/auth/register.js"></script>
+        
+        <title>Festival Experiência Viva</title>
+    </head>
+    
+    <body>
+        <header id="header"></header>
+        <nav id="nav" role="navigation"></nav>
+
+        <main id="main">
+            <h2>Cadastro</h2>
+            <p>Preencha os campos para se cadastrar.</p>
+
+            <form action="" class="form" id="form">
+                
+                <article class="form-group">
+                    <label for="name">Nome:</label>
+                    <input type="text" name="nameInput" id="name" autocomplete="name" required>
+                </article>
+
+                <article class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" name="emailInput" id="email" autocomplete="email" required>
+                </article>
+
+                <article class="form-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" name="passwordInput" id="password" autocomplete="current-password" required>
+                </article>
+
+                <article class="form-group">
+                    <label for="confirmPassword">Confirmar Senha:</label>
+                    <input type="password" name="confirmPasswordInput" id="confirmPassword" autocomplete="off" required>
+                </article>
+
+                <span id="formError"></span>
+                <button type="submit" id="submitButton">Cadastrar</button>
+                <a href="/frontend/html/auth/login.html"> Clique aqui para entrar.</a>
+            </form>
+        </main>
+
+        <footer id="footer"></footer>
+    </body>
+</html>
