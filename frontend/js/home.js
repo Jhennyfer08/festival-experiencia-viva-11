@@ -1,4 +1,9 @@
 import { api } from "/frontend/js/config/api.js";
+import {
+    formatDate,
+    formatTime,
+    validDate,
+} from "/frontend/js/config/datetime.js";
 
 async function createInscriptButton(activityId, participantId) {
     const result = await api.get(`/inscription/${activityId}/${participantId}`);
@@ -17,7 +22,8 @@ async function loadActivities() {
     let html = "";
 
     for (const element of composition.content) {
-        html += `
+        if (validDate(element.date, element.time)) {
+            html += `
             <article class="activity">
                 <div class="img-container">
                     <img src="${element.image}" alt="${element.name}">
@@ -27,20 +33,21 @@ async function loadActivities() {
                     <h2>${element.name}</h2>
                     <p>${element.description}</p>
                     <address>${element.position}</address>
-                    <time datetime="${element.date}-${element.time}"> ${element.date} às ${element.time}hrs </time>
+                    <time datetime="${element.date}-${element.time}"> ${formatDate(element.date)} às ${formatTime(element.time)}hrs </time>
                     ${await createInscriptButton(element.id, access.id)}
                 </div>
             </article>
         `;
+        }
     }
 
     container.innerHTML = html;
 
-    document.querySelectorAll(".inscript-button").forEach(button => {
+    document.querySelectorAll(".inscript-button").forEach((button) => {
         button.addEventListener("click", async (event) => {
             if (event.target.classList.contains("inscripted")) {
                 await unsubscript(event);
-            } else{
+            } else {
                 await inscript(event);
             }
         });
