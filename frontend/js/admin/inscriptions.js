@@ -1,4 +1,5 @@
 import { api } from "/frontend/js/config/api.js";
+import { showDialog } from "/frontend/js/config/dialog.js";
 
 async function createOptions(containerId, route) {
     const container = document.getElementById(containerId);
@@ -20,8 +21,8 @@ async function loadAll() {
     composition.content.forEach((element) => {
         html += `
             <tr>
-                <td>${element.activity}</td>
-                <td>${element.participant}</td>
+                <td data-label="Atividade: ">${element.activity}</td>
+                <td data-label="Participante: ">${element.participant}</td>
                 <td>
                     <button type="button" class="edit-button" data-id="${element.id}">Editar</button>
                 </td>
@@ -59,7 +60,7 @@ async function save(event) {
         error.textContent = result.message;
     } else {
         error.textContent = "";
-        alert(result.message);
+        await showDialog(result.message);
         event.target.reset();
     }
 
@@ -86,7 +87,7 @@ async function remove(id) {
     const result = await api.delete(`/participants/${id}`);
 
     if (!result.success) {
-        alert(result.message);
+        await showDialog(result.message);
     }
 
     await loadAll();

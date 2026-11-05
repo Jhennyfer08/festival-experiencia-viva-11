@@ -1,4 +1,5 @@
 import { api } from "/frontend/js/config/api.js";
+import { showDialog } from "/frontend/js/config/dialog.js";
 
 async function loadAll() {
     const container = document.getElementById("tbody");
@@ -8,12 +9,12 @@ async function loadAll() {
     composition.content.forEach((element) => {
         html += `
             <tr>
-                <td>${element.name}</td>
-                <td>${element.description}</td>
-                <td>${element.position}</td>
-                <td>${element.capacity}</td>
-                <td>${element.date}</td>
-                <td>${element.time}</td>
+                <td data-label="Nome: ">${element.name}</td>
+                <td data-label="Descrição: ">${element.description}</td>
+                <td data-label="Localização: ">${element.position}</td>
+                <td data-label="Capacidade: ">${element.capacity}</td>
+                <td data-label="Data: ">${element.date}</td>
+                <td data-label="Horário: ">${element.time}</td>
                 <td>
                     <button type="button" class="edit-button" data-id="${element.id}">Editar</button>
                 </td>
@@ -56,7 +57,7 @@ async function save(event) {
         error.textContent = result.message;
     } else {
         error.textContent = "";
-        alert(result.message);
+        await showDialog(result.message);
         event.target.reset();
     }
 
@@ -83,7 +84,7 @@ async function remove(id) {
     const result = await api.delete(`/activities/${id}`);
 
     if (!result.success) {
-        alert(result.message)
+        await showDialog(result.message)
     }
 
     await loadAll();
