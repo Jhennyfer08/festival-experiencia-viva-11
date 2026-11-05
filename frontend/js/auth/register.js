@@ -1,4 +1,5 @@
 import { api } from "/frontend/js/config/api.js";
+import { showDialog } from "/frontend/js/config/dialog.js";
 
 async function register(event) {
     event.preventDefault();
@@ -7,7 +8,7 @@ async function register(event) {
     const confirmPassword = document.getElementById("confirmPassword").value;
 
     if (password !== confirmPassword) {
-        alert("As senhas precisam ser iguais.");
+        await showDialog("As senhas precisam ser iguais.");
         return;
     }
 
@@ -24,7 +25,7 @@ async function register(event) {
         error.textContent = result.message;
     } else {
         error.textContent = "";
-        alert(result.message);
+        await showDialog(result.message);
         event.target.reset();
 
         window.location.href = "/frontend/html/auth/login.html";

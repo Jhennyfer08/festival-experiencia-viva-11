@@ -1,4 +1,5 @@
 import { api } from "/frontend/js/config/api.js";
+import { showDialog } from "/frontend/js/config/dialog.js";
 
 async function login(event) {
     event.preventDefault();
@@ -15,7 +16,7 @@ async function login(event) {
         error.textContent = result.message;
     } else {
         error.textContent = "";
-        alert(result.message);
+        await showDialog(result.message);
         event.target.reset();
 
         localStorage.removeItem("access");
