@@ -3,24 +3,57 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="O Festival Experiência VIVA é um evento anual realizado com o apoio financeiro da Instituição VIVA, que acredita no poder transformador da arte, da cultura e da educação. Com uma programação gratuita e acessível a toda a comunidade, o festival proporciona momentos de aprendizado, entretenimento e conexão, valorizando a diversidade cultural e ampliando o acesso ao conhecimento."/>
+        <meta
+            name="description"
+            content="O Festival Experiência VIVA é um evento anual realizado com o apoio financeiro da Instituição VIVA, que acredita no poder transformador da arte, da cultura e da educação. Com uma programação gratuita e acessível a toda a comunidade, o festival proporciona momentos de aprendizado, entretenimento e conexão, valorizando a diversidade cultural e ampliando o acesso ao conhecimento."
+        />
 
-        <link rel="shortcut icon" href="/frontend/img/icons/logo.webp" type="image/x-icon"/>
+        <link
+            rel="shortcut icon"
+            href="/frontend/img/icons/logo.webp"
+            type="image/x-icon"
+        />
 
         <link rel="stylesheet" href="/frontend/css/global.css" />
         <link rel="stylesheet" href="/frontend/css/components.css" />
 
         <script type="module" src="/frontend/js/home.js"></script>
         <script type="module" src="/frontend/js/config/components.js"></script>
-        
+
         <title>Festival Experiência Viva</title>
     </head>
-    
+
     <body>
         <header id="header"></header>
         <nav id="nav" role="navigation"></nav>
 
-        <main id="main"></main>
+        <main id="main">
+            <div class="info">
+                <h2>Inscreva-se e Participe</h2>
+                <p>
+                    Aqui você encontra todas as atividades disponíveis até o
+                    momento.
+                </p>
+            </div>
+
+            <section class="activity-container" id="activity">
+                <article class="activity">
+                    <div class="img-container">
+                        <img src="/frontend/img/activities/bonecas-pano.webp" alt="" />
+                    </div>
+
+                    <div class="activity-info">
+                        <h2></h2>
+                        <p></p>
+                        <address></address>
+                        <time datetime="">
+                             às rs
+                        </time>
+                        ${await createInscriptButton(element.id, access.id)}
+                    </div>
+                </article>
+            </section>
+        </main>
 
         <footer id="footer"></footer>
     </body>
