@@ -2,7 +2,6 @@ header {
     position: relative;
     width: 100%;
     min-height: 20rem;
-
     overflow: hidden;
 
     display: flex;
@@ -11,24 +10,25 @@ header {
 
     .carousel {
         position: absolute;
+        /* min-width: 100%; */
 
         display: flex;
         transition: transform 1s ease-in-out;
-        filter: brightness(80%);
 
         .slide {
             min-width: 100%;
-            min-height: 20rem;
+            height: 100%;
             object-fit: cover;
         }
     }
 
     .brand {
-        position: relative;
         width: 20rem;
+        position: relative;
         z-index: 1;
     }
 }
+
 
 nav {
     width: 100%;
@@ -103,6 +103,7 @@ footer {
         min-width: 100%;
         object-fit: cover;
     }
+
     nav {
         ul {
             flex-direction: column;

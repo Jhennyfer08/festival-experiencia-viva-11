@@ -60,9 +60,9 @@ function headerCarousel() {
     const slides = document.querySelectorAll(".slide");
 
     let currentSlide = 0;
+    
     setInterval(() => {
         currentSlide = (currentSlide + 1) % slides.length;
-
         carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
     }, 3000);
 }

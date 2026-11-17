@@ -66,7 +66,7 @@ async function loadMetrics() {
                 <span>${((totalQuantity / totalCapacity) * 100).toFixed(1)}%</span>
             </div>
 
-            <p>${totalQuantity} de ${totalQuantity} vagas</p>
+            <p>${totalQuantity} de ${totalCapacity} vagas</p>
         </article>
     `;
 
@@ -75,10 +75,10 @@ async function loadMetrics() {
 
 async function loadParticipants(participants) {
     let html = "";
-
+    
     if (participants) {
         participants.forEach(participant => {
-            html = `<li>${participant}</li>`;
+            html += `<li>${participant}</li>`;
         });
     }
     
@@ -89,7 +89,7 @@ async function loadActivities() {
     const container = document.getElementById("dashboard");
     const composition = await api.get("/activities/inscripted");
     let html = "";
-
+    
     for (const element of composition.content) {
         html += `
             <article class="activity">
@@ -101,10 +101,10 @@ async function loadActivities() {
                     <h2>${element.name}</h2>
                     <p>${element.description}</p>
                     <address>${element.position}</address>
-                    <time datetime="${element.date}-${element.time}"> ${formatDate(element.date)} às ${formatTime(element.time)}hrs </time>
+                    <time datetime="${element.date}-${element.time}"> ${element.date} às ${element.time}hrs </time>
                     <div class="participants">
                         <h2>Participantes - ${element.quantity} de ${element.capacity}</h2>
-                        <ul>${await loadParticipants(element.participants)}</ul>
+                        <ul>${await loadParticipants(element.inscripted)}</ul>
                     </div>
                 </div>
             </article>
