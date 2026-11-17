@@ -1,8 +1,10 @@
 export async function showDialog(message) {
-    const html = `
-        <dialog id="dialog" class="dialog">
-            <span class="icon">&#10177;</span>
-            <h3>&#11030; ${message} &#11031;</h3>
+    let html = "";
+
+    html = `
+        <dialog class="dialog" id="dialog">
+            <span>&#10177;</span>
+            <p>&#11030; ${message} &#11031;</p>
         </dialog>
     `;
 

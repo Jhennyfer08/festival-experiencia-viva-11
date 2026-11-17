@@ -1,5 +1,6 @@
+import { showDialog } from "./config/dialog.js";
 import { api } from "/frontend/js/config/api.js";
-import { formatDate, formatTime, validDate} from "/frontend/js/config/datetime.js";
+import { formatDate, formatTime, validDate } from "/frontend/js/config/datetime.js";
 
 async function createInscriptButton(activityId, participantId) {
     const result = await api.get(`/inscriptions/${activityId}/${participantId}`);
@@ -36,8 +37,6 @@ async function loadActivities() {
         `;
         }
     }
-    console.log(html);
-
     container.innerHTML = html;
 
     document.querySelectorAll(".inscript-button").forEach((button) => {
@@ -65,6 +64,8 @@ async function inscript(event) {
     if (result.success) {
         button.dataset.inscription = result.id;
         await loadActivities();
+    } else {
+        await showDialog(result.message);
     }
 }
 
@@ -77,6 +78,8 @@ async function unsubscript(event) {
     if (result.success) {
         delete button.dataset.inscription;
         await loadActivities();
+    } else {
+        await showDialog(result.message);
     }
 }
 

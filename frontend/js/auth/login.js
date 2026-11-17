@@ -24,7 +24,7 @@ async function login(event) {
         const access = JSON.parse(localStorage.getItem("access"));
 
         if (access.role === "admin") {
-            window.location.href = "/frontend/html/admin/participant.html";
+            window.location.href = "/frontend/html/admin/dashboard.html";
         } else {
             window.location.href = "/frontend/html/home.html";
         }
