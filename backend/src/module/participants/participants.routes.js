@@ -77,7 +77,13 @@ routes.post("/login", async (req, res, next) => {
 
 routes.put("/", async (req, res, next) => {
     try {
-        req.body.password = await encrypt.encrypt(req.body.password);
+        if (req.body.password !== "") {
+            req.body.password = await encrypt.encrypt(req.body.password);
+        } else{
+            const participants = new Participants(req.body);
+            const user = await participants.findById();
+            req.body.password = user[0].password;
+        }
         const participants = new Participants(req.body);
         await new Validation(participants).verifyId();
 

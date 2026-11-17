@@ -8,6 +8,6 @@ export function formatTime(time) {
 }
 
 export function validDate(date, time) {
-    const datetime =  `${date} ${time}`;
+    const datetime = `${date} ${time}`;
     return datetime >= new Date(datetime);
 }
